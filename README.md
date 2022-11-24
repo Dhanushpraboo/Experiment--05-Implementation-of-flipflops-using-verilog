@@ -107,34 +107,80 @@ Q(t+1)=T′Q(t)+TQ(t)′
 
 
 ### PROGRAM 
+~~~
 /*
 Program for flipflops  and verify its truth table in quartus using Verilog programming.
-Developed by: 
-RegisterNumber:  
+Developed by: S Dhanush Praboo
+RegisterNumber:  212221230019
 */
+i) SR FLIP FLOP:
 
+module S(S,R,Clock,Q,Qbar);
+input S,R,Clock;
+output Q,Qbar;
+wire X,Y;
+nand (X,S,Clock);
+nand (Y,R,Clock);
+nand (Q,X,Qbar);
+nand(Qbar,Y,Q);
+endmodule
 
+ii) D FLIP FLOP:
 
+module D(D,Clock,Q,Qbar);
+input D,Clock;
+output Q,Qbar;
+assign Dbar = ~D;
+wire X,Y;
+nand (X,D,Clock);
+nand (Y,Dbar,Clock);
+nand (Q,X,Qbar);
+nand (Qbar,Y,Q);
+endmodule
 
+iii) JK FLIP FLOP:
 
+module JK(J,K,Clock,Q,Qbar);
+input J,K,Clock;
+output Q,Qbar;
+wire P,S;
+nand (P,J,Clock,Qbar);
+nand (S,K,Clock,Q);
+nand (Q,P,Qbar);
+nand (Qbar,S,Q);
+endmodule
 
+iv) T FLIP FLOP:
+
+module T (T,Clock,Q,Qbar);
+input T,Clock;
+output Q,Qbar;
+wire A,B;
+nand (A,T,Clock,Qbar);
+nand (B,T,Clock,Q);
+nand (Q,A,Qbar);
+nand (Qbar,B,Q);
+endmodule
+~~~
 ### RTL LOGIC FOR FLIPFLOPS 
+## SR FLIP FLOP
+![image](https://user-images.githubusercontent.com/94426323/203713312-8c3f5ccb-8a13-45bc-ac0d-f7feaa2f30e5.png)
+## D FLIP FLOP
+![image](https://user-images.githubusercontent.com/94426323/203713365-0a721ffc-7d26-4b72-bcc7-3067b84ababc.png)
+## JK FLIP FLOP
+![image](https://user-images.githubusercontent.com/94426323/203713405-7a87e9dd-62b3-40ed-8c37-b3cb7eaf3f6e.png)
+## T FLIP FLOP
+![image](https://user-images.githubusercontent.com/94426323/203713452-885e6b19-b133-4f50-98ac-180879bd8d00.png)
 
+### TIMING DIGRAMS FOR FLIP FLOPS
+## SR FLIP FLOP
+![image](https://user-images.githubusercontent.com/94426323/203713496-d47fd81e-660b-4a6f-bab6-69a17c655aeb.png)
+## D FLIP FLOP
+![image](https://user-images.githubusercontent.com/94426323/203713534-020f595f-7a93-4737-83dd-5b57b5b796f2.png)
+## JK FLIP FLOP
+![image](https://user-images.githubusercontent.com/94426323/203713575-94cd44da-c9bf-42cd-9224-3f2b30a72d13.png)
+## T FLIP FLOP
+![image](https://user-images.githubusercontent.com/94426323/203713613-cf93ed92-ae33-469c-8afe-5728d6227d13.png)
 
-
-
-
-
-
-
-
-### TIMING DIGRAMS FOR FLIP FLOPS 
-
-
-
-
-
-
-
-
-### RESULTS 
+### RESULT
+All the flipflops are implementde using verilog and their functionality has been validated using their functional tables.
